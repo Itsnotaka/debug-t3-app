@@ -1,0 +1,7 @@
+packages:
+  - apps/nextjs
+  - packages/trpc
+  - packages/lib
+  - packages/auth
+  - packages/db
+  - packages/config/*
