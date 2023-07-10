@@ -1,37 +1,42 @@
-import type { GetServerSidePropsContext, NextPage } from "next";
+import type { NextPage } from "next";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  useCommandState,
+} from "cmdk";
 
-import { useLocale } from "@acme/lib/hooks/useLocale";
-
-import { ssrInit } from "~/server/ssr";
-
-const Home: NextPage = () => {
-  const { t, isLocaleReady } = useLocale();
-
-  if (!isLocaleReady) return null;
-
+const Empty = () => {
+  const search = useCommandState((state) => state.search);
   return (
-    <>
-      <main className="flex h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-        <div className="container mt-12 flex flex-col items-center justify-center gap-4 px-4 py-8">
-          <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-            <title>{t("Create_T3_App")}</title>
-          </h1>
-        </div>
-      </main>
-    </>
+    <CommandEmpty>{search ?? `No results found for ${search}`}</CommandEmpty>
   );
 };
 
-export const getServerSideProps = async (
-  context: GetServerSidePropsContext,
-) => {
-  const ssr = await ssrInit(context);
-
-  return {
-    props: {
-      trpcState: ssr.dehydrate(),
-    },
-  };
+const Home: NextPage = () => {
+  return (
+    <Command>
+      <CommandInput placeholder="Type a command or search..." />
+      <CommandList>
+        <Empty />
+        <CommandGroup heading="Suggestions">
+          <CommandItem>Calendar</CommandItem>
+          <CommandItem>Search Emoji</CommandItem>
+          <CommandItem>Calculator</CommandItem>
+        </CommandGroup>
+        <CommandSeparator />
+        <CommandGroup heading="Settings">
+          <CommandItem>Profile</CommandItem>
+          <CommandItem>Billing</CommandItem>
+          <CommandItem>Settings</CommandItem>
+        </CommandGroup>
+      </CommandList>
+    </Command>
+  );
 };
 
 export default Home;
