@@ -1,0 +1,24 @@
+{
+  "name": "@acme/electron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist-electron/index.js",
+  "scripts": {
+    "dev": "vite"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^4.29.25",
+    "@trpc/client": "^10.34.0",
+    "@trpc/react-query": "^10.34.0",
+    "@trpc/server": "^10.34.0",
+    "superjson": "1.12.4"
+  },
+  "devDependencies": {
+    "@acme/trpc": "^0.1.0",
+    "@vitejs/plugin-react": "^4.0.3",
+    "electron": "^25.3.0",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.4",
+    "vite-plugin-electron": "^0.12.0"
+  }
+}
