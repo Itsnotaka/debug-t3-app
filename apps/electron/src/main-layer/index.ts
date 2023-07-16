@@ -1,5 +1,5 @@
 import path from "path";
-import { BrowserWindow, app } from "electron";
+import { app, BrowserWindow } from "electron";
 
 const dist = path.join(__dirname, "../dist");
 // process.env.PUBLIC = app.isPackaged ? dist : path.join(dist, "../public");

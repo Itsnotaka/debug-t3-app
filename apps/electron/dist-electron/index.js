@@ -7,8 +7,8 @@ const url = process.env.VITE_DEV_SERVER_URL;
 electron.app.on("ready", () => {
   const win = new electron.BrowserWindow({
     webPreferences: {
-      preload
-    }
+      preload,
+    },
   });
   if (url) {
     void win.loadURL(url);

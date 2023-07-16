@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
 import { createTRPCReact } from "@trpc/react-query";
 import { createRoot } from "react-dom/client";
 import superjson from "superjson";
 
 import { type AppRouter } from "@acme/trpc/server/routers/_app";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const trpc = createTRPCReact<AppRouter>();
 
@@ -39,7 +39,7 @@ function HelloElectron() {
   return (
     <div>
       <h1>Hello Electron!</h1>
-      {data.i18n` `}
+      {data.i18n}
     </div>
   );
 }

@@ -1,9 +1,8 @@
-import { createNextApiHandler } from "@acme/trpc/server/createNextApiHandler";
-import { publicViewerRouter } from "@acme/trpc/server/routers/publicViewer/_router";
-
 import { type NextApiRequest, type NextApiResponse } from "next";
 import cors from "nextjs-cors";
 
+import { createNextApiHandler } from "@acme/trpc/server/createNextApiHandler";
+import { publicViewerRouter } from "@acme/trpc/server/routers/publicViewer/_router";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   // Enable cors
